@@ -62,7 +62,7 @@ import { ref } from "vue";
 import { useCardsStore } from "src/stores/cards";
 
 const cardStore = useCardsStore();
-const state    = ref( "*** Presiona iniciar para comenzar ***" );
+const state    = ref( "¡¡ Presiona iniciar para comenzar !!" );
 const gather   = ref( true );
 const question = ref( null );
 const mode     = ref( "" );
@@ -88,28 +88,28 @@ let startShuffle = () => {
 	if ( count.value++ < 6 ) {
 		setTimeout( startShuffle, 300 );
 	} else {
-		state.value = `Selecciona ${question.value.label} ${question.value.symbol}!!`;
-		mode.value = "answer";
+		state.value = `¡¡Selecciona ${question.value.label} ${question.value.symbol}!!`;
+		mode.value = "respuesta";
 	}
 };
 
 function startGame() {
-	mode.value = "iniciar";
+	mode.value = "Iniciar";
 	question.value = cardStore.symbols[ parseInt( Math.random() * 3 ) ];
 	turnAllCard( false );
 	gather.value = true;
-	state.value = "Estas listo...";
+	state.value = "¿Estás listo?";
 	setTimeout( () => {
 		gather.value = false;
-		state.value = "Tu mision es...";
-	}, 1000 );
+		state.value = "¡¡Tú misión es...!!";
+	}, 2000 );
 	setTimeout( () => {
 		turnAllCard( true );
-		state.value = `Busca ${question.value.label} ${question.value.symbol}!!`;
+		state.value = `¡¡Busca ${question.value.label} ${question.value.symbol}!!`;
 	}, 2000 );
 	setTimeout( () => {
 		turnAllCard( false );
-		state.value = "Estas listo...";
+		state.value = "¿Estás listo?";
 	}, 4000 );
 	count.value = 0;
 	setTimeout( () => {
@@ -122,7 +122,7 @@ function openCard( card ) {
 	if ( !mode.value.length ){
 		startGame();
 	}
-	if ( mode.value !== "answer" ){
+	if ( mode.value !== "respuesta" ){
 		return;
 	}
 
@@ -130,10 +130,10 @@ function openCard( card ) {
 
 	if ( card.label === question.value.label ) {
 		cardStore.scores++;
-		state.value = `🤙🤙🤙🦀  Gansate, tu tienes ${question.value.label} ${question.value.symbol}  🦀🤟🤟🤟`;
+		state.value = `¡¡🤙🤙🤙🦀  Ganaste, tú tienes ${question.value.label} ${question.value.symbol}  🦀🤟🤟🤟!!`;
 	} else {
 		cardStore.scores--;
-		state.value = "👎👎👎🐧 Perdiste :( 🐧 👎👎👎";
+		state.value = "¡¡👎👎👎🐧 Perdiste 🐧 👎👎👎!!";
 		setTimeout( () => ( turnAllCard( true ) ), 1000 );
 	}
 
