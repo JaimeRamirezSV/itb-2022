@@ -3,13 +3,13 @@
 ## Instalar dependencias
 
 ```bash
-npm install
+	npm install
 ```
 
 ### Encender servidor SPA dev
 
 ```bash
-quasar dev
+	quasar dev
 ```
 
 ### Configurar iconos para android e ios
@@ -23,34 +23,34 @@ quasar dev
 	cd src/capacitor
 ```
 ```bash
-   npx cap add android
+	npx cap add android
 ```
 ```bash
-   npx cap add ios
+	npx cap add ios
 ```
 
 ## Permisos para Capasitor en mac
 
 ```bash
-   sudo chmod +x src-capacitor/node_modules/@capacitor/cli/bin/capacitor
+	sudo chmod +x src-capacitor/node_modules/@capacitor/cli/bin/capacitor
 ```
 ```bash
-  sudo chmod +x src-capacitor/ios/App/Pods/Target\ Support\ Files/Pods-App/Pods-App-frameworks.sh
+	sudo chmod +x src-capacitor/ios/App/Pods/Target\ Support\ Files/Pods-App/Pods-App-frameworks.sh
 ```
 ```bash
-  sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+	sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ```
 
 ## Generar icons para android y ios
 ```bash
-https://appicon.co
+	https://appicon.co
 ```
 
 ## Reemplazar imagenes de:
 
 ```bash
-   src-capacitor/android/app/src/main/res/
+	src-capacitor/android/app/src/main/res/
 ```
 ```bash
-   src-capacitor/ios/App/App/Assets.xcassets/AppIcon.appiconset
+	src-capacitor/ios/App/App/Assets.xcassets/AppIcon.appiconset
 ```
