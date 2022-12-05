@@ -36,11 +36,11 @@
 		/>
 	</div>
 
-	<ul class="cards" :class="{ gather: gather }">
+	<ul class="cards" :class="[ gather ? 'gather' : 'none' ]">
 		<li
 			class="card"
 			v-for="card in cardStore.cards"
-			:class="{ open: card.open }"
+			:class="[ card.open ? 'open' : 'none']"
 			:data-order="card.id"
 			:key="card.label"
 			@click="openCard( card )"
@@ -134,7 +134,7 @@ function openCard( card ) {
 	} else {
 		cardStore.scores--;
 		state.value = "👎👎👎🐧 Perdiste :( 🐧 👎👎👎";
-		setTimeout( () => ( cardStore.cards.map( ( c ) => { c.open = true;  return c; } ) ), 1000 );
+		setTimeout( () => ( turnAllCard( true ) ), 1000 );
 	}
 
 	setTimeout( startGame, 3000 );
