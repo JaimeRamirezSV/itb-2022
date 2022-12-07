@@ -55,6 +55,13 @@
 			</div>
 		</li>
 	</ul>
+	<q-ajax-bar
+		ref="bar"
+		position="bottom"
+		color="accent"
+		size="10px"
+		skip-hijack
+	/>
 </template>
 
 <script setup>
@@ -68,8 +75,10 @@ const question = ref( null );
 const mode     = ref( "" );
 const count    = ref( 0 );
 const scores   = ref( 0 );
+const bar      = ref( null );
 
 function shuffle() {
+	bar.value.start();
 	let newOrder = [
 		1,
 		2,
@@ -77,6 +86,7 @@ function shuffle() {
 		4
 	].sort( () => Math.random() - 0.5 );
 	cardStore.cards.map( ( card, index ) => ( card.id = newOrder[ index ] ) );
+	bar.value.stop();
 }
 
 function turnAllCard( state ) {
@@ -94,6 +104,7 @@ let startShuffle = () => {
 };
 
 function startGame() {
+	bar.value.start();
 	mode.value = "Iniciar";
 	question.value = cardStore.symbols[ parseInt( Math.random() * 3 ) ];
 	turnAllCard( false );
@@ -115,10 +126,10 @@ function startGame() {
 	setTimeout( () => {
 		startShuffle();
 	}, 6000 );
+	bar.value.stop();
 }
 
 function openCard( card ) {
-
 	if ( !mode.value.length ){
 		startGame();
 	}
