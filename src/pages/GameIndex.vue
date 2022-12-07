@@ -58,7 +58,7 @@
 	<q-ajax-bar
 		ref="bar"
 		position="bottom"
-		color="accent"
+		color="primary"
 		size="10px"
 		skip-hijack
 	/>
